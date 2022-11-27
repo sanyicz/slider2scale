@@ -99,7 +99,7 @@ class DataPlotter(object):
         tickDelta = 10 if abs(x2-x1) > 10 else 1
         xtickLocations = [i for i in range(0, x2-x1, tickDelta)]
         self.axis.set_xticks(xtickLocations)
-        xtickLabels = [self.dataFrame[quantityX][i].replace(' ', '\n') for i in range(x1, x2, tickDelta)]
+        xtickLabels = [str(self.dataFrame[quantityX][i]).replace(' ', '\n') for i in range(x1, x2, tickDelta)]
         self.axis.set_xticklabels(xtickLabels)
 ##        print(f"xtickLocations: {xtickLocations}")
 ##        print(f"xtickLabels: {xtickLabels}")
