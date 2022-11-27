@@ -97,7 +97,10 @@ class DataPlotter(object):
             return
         x1, x2 = self.slider.var1.get(), self.slider.var2.get()
         tickDelta = 10 if abs(x2-x1) > 10 else 1
-        xtickLocations = [i for i in range(0, x2-x1, tickDelta)]
+        if isinstance(self.dataFrame[quantityX][0], str):
+            xtickLocations = [i for i in range(0, x2-x1, tickDelta)]
+        else:
+            xtickLocations = [self.dataFrame[quantityX][i] for i in range(0, x2-x1, tickDelta)]
         self.axis.set_xticks(xtickLocations)
         xtickLabels = [str(self.dataFrame[quantityX][i]).replace(' ', '\n') for i in range(x1, x2, tickDelta)]
         self.axis.set_xticklabels(xtickLabels)
